@@ -1,29 +1,31 @@
-
 import { Code, MessageCircle, Palette, Database } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Skills = () => {
+  const { t } = useLanguage();
+
   const skillCategories = [
     {
-      title: "Communication",
+      title: t('skills.communication'),
       icon: <MessageCircle className="w-8 h-8 text-white" />,
       color: "from-[#E195AB] to-[#FFCCE1]",
       skills: ["Public Speaking", "Team Leadership", "Event Management", "Cross-cultural Communication"]
     },
     {
-      title: "Programming",
+      title: t('skills.programming'),
       icon: <Code className="w-8 h-8 text-white" />,
       color: "from-[#FFCCE1] to-[#F2F9FF]",
       skills: ["PHP", "JavaScript", "CSS", "HTML", "Laravel Framework"]
     },
     {
-      title: "Design & UI/UX",
+      title: t('skills.design'),
       icon: <Palette className="w-8 h-8 text-white" />,
       color: "from-[#F2F9FF] to-[#E195AB]",
       skills: ["User Interface Design", "User Experience", "Responsive Design", "Color Theory"]
     },
     {
-      title: "Database & Systems",
+      title: t('skills.database'),
       icon: <Database className="w-8 h-8 text-white" />,
       color: "from-[#FFCCE1] to-[#E195AB]",
       skills: ["Database Design", "System Analysis", "Data Management", "Information Architecture"]
@@ -35,10 +37,10 @@ export const Skills = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#E195AB]" style={{ fontFamily: 'Fredoka, cursive' }}>
-            Skills & Abilities ⭐
+            {t('skills.title')} ⭐
           </h2>
           <p className="text-xl text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            The tools and talents I bring to every project
+            {t('skills.subtitle')}
           </p>
         </div>
 
@@ -74,12 +76,10 @@ export const Skills = () => {
         <div className="mt-16 text-center">
           <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg shadow-[#E195AB]/20 max-w-3xl mx-auto">
             <h3 className="text-2xl font-bold text-[#E195AB] mb-4" style={{ fontFamily: 'Fredoka, cursive' }}>
-              Always Learning! 🌟
+              {t('skills.learning')} 🌟
             </h3>
             <p className="text-gray-700 leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              I believe in continuous growth and am always excited to learn new technologies, 
-              improve my existing skills, and take on new challenges. The world of technology 
-              is constantly evolving, and I love being part of that journey! ✨
+              {t('skills.learning.desc')} ✨
             </p>
           </div>
         </div>

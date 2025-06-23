@@ -1,8 +1,11 @@
 
 import { ArrowDown, Download, Sparkles, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Hero = () => {
+  const { t } = useLanguage();
+
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -26,7 +29,7 @@ export const Hero = () => {
           <div className="order-2 lg:order-1 flex justify-center">
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=500&fit=crop&crop=face"
+                src="/lovable-uploads/d5ac0e49-c77a-4228-90d9-bc165110b9ed.png"
                 alt="Fransiska"
                 className="w-80 h-96 object-cover rounded-3xl shadow-2xl shadow-[#E195AB]/30 ring-4 ring-[#FFCCE1]/50"
               />
@@ -46,9 +49,9 @@ export const Hero = () => {
             </div>
             
             <p className="text-xl sm:text-2xl text-[#E195AB] mb-8 leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              Hello! I'm <span className="font-bold text-[#E195AB]">Fransiska</span>, 
+              {t('hero.greeting')} <span className="font-bold text-[#E195AB]">Fransiska</span>, 
               <br />
-              a dreamy coder with a passion for beautiful digital experiences ✨
+              {t('hero.description')} ✨
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
@@ -58,7 +61,7 @@ export const Hero = () => {
                 style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 <Download className="w-5 h-5 mr-2" />
-                Download CV
+                {t('hero.download')}
               </Button>
             </div>
             
@@ -67,7 +70,7 @@ export const Hero = () => {
               className="animate-bounce text-[#E195AB] hover:text-[#FFCCE1] transition-colors duration-200 flex flex-col items-center gap-2"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
-              <span className="text-sm">Scroll & explore</span>
+              <span className="text-sm">{t('hero.scroll')}</span>
               <ArrowDown size={24} />
             </button>
           </div>

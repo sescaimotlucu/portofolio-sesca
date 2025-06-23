@@ -1,17 +1,20 @@
 
 import { GraduationCap, Calendar, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Education = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#FFF5D7] relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#E195AB]" style={{ fontFamily: 'Fredoka, cursive' }}>
-            Education ✨
+            {t('education.title')} ✨
           </h2>
           <p className="text-xl text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            My academic journey in Information Systems
+            {t('education.subtitle')}
           </p>
         </div>
 
@@ -25,37 +28,35 @@ export const Education = () => {
                 
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-[#E195AB] mb-2" style={{ fontFamily: 'Fredoka, cursive' }}>
-                    Universitas Katolik Soegijapranata
+                    {t('education.university')}
                   </h3>
                   
                   <div className="space-y-3">
                     <div className="flex items-center gap-2 text-gray-600">
                       <GraduationCap className="w-4 h-4 text-[#FFCCE1]" />
                       <span style={{ fontFamily: 'Poppins, sans-serif' }}>
-                        Bachelor of Information Systems
+                        {t('education.degree')}
                       </span>
                     </div>
                     
                     <div className="flex items-center gap-2 text-gray-600">
                       <Calendar className="w-4 h-4 text-[#FFCCE1]" />
                       <span style={{ fontFamily: 'Poppins, sans-serif' }}>
-                        Class of 2022 - Present
+                        {t('education.year')}
                       </span>
                     </div>
                     
                     <div className="flex items-center gap-2 text-gray-600">
                       <MapPin className="w-4 h-4 text-[#FFCCE1]" />
                       <span style={{ fontFamily: 'Poppins, sans-serif' }}>
-                        Semarang, Indonesia
+                        {t('education.location')}
                       </span>
                     </div>
                   </div>
                   
                   <div className="mt-6 p-4 bg-gradient-to-r from-[#F2F9FF] to-[#FFCCE1]/30 rounded-2xl">
                     <p className="text-gray-700 leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      Currently pursuing my bachelor's degree with focus on system development, 
-                      database management, and modern web technologies. Active in campus 
-                      organizations and always eager to learn new technologies! 💖
+                      {t('education.description')} 💖
                     </p>
                   </div>
                 </div>

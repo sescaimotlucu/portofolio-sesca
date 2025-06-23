@@ -1,29 +1,31 @@
-
 import { Mail, Phone, MapPin, Send, Heart, Instagram, Linkedin, Github } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Contact = () => {
+  const { t } = useLanguage();
+
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6 text-white" />,
-      title: "Email",
+      title: t('contact.email'),
       info: "fransiska@example.com",
       link: "mailto:fransiska@example.com",
       color: "from-[#E195AB] to-[#FFCCE1]"
     },
     {
       icon: <Phone className="w-6 h-6 text-white" />,
-      title: "Phone",
+      title: t('contact.phone'),
       info: "+62 xxx-xxxx-xxxx",
       link: "tel:+62xxxxxxxxx",
       color: "from-[#FFCCE1] to-[#F2F9FF]"
     },
     {
       icon: <MapPin className="w-6 h-6 text-white" />,
-      title: "Location",
+      title: t('contact.location'),
       info: "Semarang, Indonesia",
       link: "#",
       color: "from-[#F2F9FF] to-[#E195AB]"
@@ -53,10 +55,10 @@ export const Contact = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#E195AB]" style={{ fontFamily: 'Fredoka, cursive' }}>
-            Let's Connect! 💕
+            {t('contact.title')} 💕
           </h2>
           <p className="text-xl text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            I'm always excited to collaborate on new projects and make new connections!
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -91,7 +93,7 @@ export const Contact = () => {
             <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg shadow-[#E195AB]/20 rounded-2xl">
               <CardContent className="p-6">
                 <h3 className="font-semibold text-[#E195AB] mb-4 text-center" style={{ fontFamily: 'Fredoka, cursive' }}>
-                  Follow Me! ✨
+                  {t('contact.follow')} ✨
                 </h3>
                 <div className="flex justify-center space-x-4">
                   {socialLinks.map((social, index) => (
@@ -113,16 +115,16 @@ export const Contact = () => {
             <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl shadow-[#E195AB]/20 rounded-3xl">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-[#E195AB] mb-6 text-center" style={{ fontFamily: 'Fredoka, cursive' }}>
-                  Send me a message! 💌
+                  {t('contact.form.title')} 💌
                 </h3>
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-[#E195AB] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                        Name *
+                        {t('contact.form.name')} *
                       </label>
                       <Input
-                        placeholder="Your lovely name"
+                        placeholder={t('contact.form.name.placeholder')}
                         className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] rounded-xl"
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                       />
@@ -133,7 +135,7 @@ export const Contact = () => {
                       </label>
                       <Input
                         type="email"
-                        placeholder="your.email@example.com"
+                        placeholder={t('contact.form.email.placeholder')}
                         className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] rounded-xl"
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                       />
@@ -142,10 +144,10 @@ export const Contact = () => {
                   
                   <div>
                     <label className="block text-sm font-medium text-[#E195AB] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      Subject *
+                      {t('contact.form.subject')} *
                     </label>
                     <Input
-                      placeholder="What would you like to talk about?"
+                      placeholder={t('contact.form.subject.placeholder')}
                       className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] rounded-xl"
                       style={{ fontFamily: 'Poppins, sans-serif' }}
                     />
@@ -153,10 +155,10 @@ export const Contact = () => {
                   
                   <div>
                     <label className="block text-sm font-medium text-[#E195AB] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      Message *
+                      {t('contact.form.message')} *
                     </label>
                     <Textarea
-                      placeholder="Tell me about your ideas, projects, or just say hello! ✨"
+                      placeholder={t('contact.form.message.placeholder')}
                       rows={6}
                       className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] resize-none rounded-xl"
                       style={{ fontFamily: 'Poppins, sans-serif' }}
@@ -170,7 +172,7 @@ export const Contact = () => {
                     style={{ fontFamily: 'Poppins, sans-serif' }}
                   >
                     <Send className="w-5 h-5 mr-2" />
-                    Send Message with Love
+                    {t('contact.form.send')}
                   </Button>
                 </form>
               </CardContent>
@@ -181,9 +183,9 @@ export const Contact = () => {
         {/* Footer */}
         <div className="mt-20 pt-8 border-t border-[#FFCCE1] text-center">
           <p className="text-gray-600 flex items-center justify-center gap-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            © 2024 Fransiska. Made with 
+            © 2024 Fransiska. {t('contact.footer')} 
             <Heart className="w-4 h-4 text-[#E195AB] fill-[#E195AB]" />
-            using React and Tailwind CSS.
+            {t('contact.footer.tech')}
           </p>
         </div>
       </div>

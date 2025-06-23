@@ -1,26 +1,28 @@
-
-import { Briefcase, Users, Mic, Calendar } from "lucide-react";
+import { Briefcase, Users, Calendar } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Experience = () => {
+  const { t } = useLanguage();
+
   const experiences = [
     {
-      title: "Internal Liaison Officer & MC",
-      organization: "HMPPSI (Himpunan Mahasiswa Program Studi Sistem Informasi)",
+      title: t('experience.officer'),
+      organization: t('experience.hmppsi'),
       period: "2022 - 2023",
-      type: "Organization",
+      type: t('experience.organization'),
       icon: <Users className="w-6 h-6 text-white" />,
       color: "from-[#E195AB] to-[#FFCCE1]",
-      description: "Led internal communications and served as Master of Ceremony for various campus events. Developed leadership and public speaking skills while fostering student community engagement."
+      description: t('experience.desc1')
     },
     {
-      title: "Intern",
-      organization: "PT Ngupoyo Lestari Mulya",
-      period: "January 2025 - April 2025",
-      type: "Internship",
+      title: t('experience.intern'),
+      organization: t('experience.company'),
+      period: "Januari 2025 - April 2025",
+      type: t('experience.internship'),
       icon: <Briefcase className="w-6 h-6 text-white" />,
       color: "from-[#FFCCE1] to-[#F2F9FF]",
-      description: "Upcoming internship opportunity to apply theoretical knowledge in real-world business environment and gain hands-on experience in information systems implementation."
+      description: t('experience.desc2')
     }
   ];
 
@@ -29,10 +31,10 @@ export const Experience = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#E195AB]" style={{ fontFamily: 'Fredoka, cursive' }}>
-            Experience 💼
+            {t('experience.title')} 💼
           </h2>
           <p className="text-xl text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            My journey in organizations and professional development
+            {t('experience.subtitle')}
           </p>
         </div>
 
