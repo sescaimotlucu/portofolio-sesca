@@ -1,13 +1,16 @@
-
 import { Mail, Phone, MapPin, Send, Heart, Instagram, Linkedin, Github, MessageCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 export const Contact = () => {
   const { t } = useLanguage();
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
   const contactInfo = [
     {
@@ -51,15 +54,61 @@ export const Contact = () => {
     }
   ];
 
-  const handleWhatsAppSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFonteApiSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    
     const formData = new FormData(e.currentTarget);
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const subject = formData.get('subject') as string;
     const message = formData.get('message') as string;
 
-    const whatsappMessage = `Halo Fransiska! 
+    const whatsappMessage = `🌟 *Pesan Baru dari Portfolio Website* 🌟
+
+📝 *Nama:* ${name}
+📧 *Email:* ${email}
+💬 *Subjek:* ${subject}
+
+📋 *Pesan:*
+${message}
+
+✨ _Dikirim otomatis dari website portfolio Fransiska_`;
+
+    try {
+      console.log("Sending message via Fonte API...");
+      
+      const response = await fetch('https://api.fonte.com.br/chat/sendText', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer pUHPiTDPi4aeGQo9Q4PW'
+        },
+        body: JSON.stringify({
+          phone: "6282115575219",
+          message: whatsappMessage
+        })
+      });
+
+      const result = await response.json();
+      console.log("Fonte API response:", result);
+
+      if (response.ok) {
+        toast({
+          title: "✅ Pesan Terkirim!",
+          description: "Pesan Anda telah berhasil dikirim ke WhatsApp Fransiska.",
+        });
+        
+        // Reset form
+        (e.target as HTMLFormElement).reset();
+      } else {
+        throw new Error(result.message || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error("Error sending WhatsApp message:", error);
+      
+      // Fallback to manual WhatsApp link
+      const fallbackMessage = `Halo Fransiska! 
 
 Nama: ${name}
 Email: ${email}
@@ -70,8 +119,16 @@ ${message}
 
 Terima kasih!`;
 
-    const whatsappUrl = `https://wa.me/6282115575219?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappUrl, '_blank');
+      const whatsappUrl = `https://wa.me/6282115575219?text=${encodeURIComponent(fallbackMessage)}`;
+      window.open(whatsappUrl, '_blank');
+      
+      toast({
+        title: "📱 Membuka WhatsApp",
+        description: "Pesan telah disiapkan, silakan kirim melalui WhatsApp.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -145,7 +202,7 @@ Terima kasih!`;
                 <h3 className="text-2xl font-bold text-[#8B7D6B] mb-6 text-center" style={{ fontFamily: 'Fredoka, cursive' }}>
                   {t('contact.form.title')} 💌
                 </h3>
-                <form className="space-y-6" onSubmit={handleWhatsAppSubmit}>
+                <form className="space-y-6" onSubmit={handleFonteApiSubmit}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-[#8B7D6B] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -204,11 +261,12 @@ Terima kasih!`;
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-gradient-to-r from-[#8B7D6B] to-[#A0937D] hover:from-[#A0937D] hover:to-[#B8A491] text-white py-4 rounded-xl font-semibold shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-black/15 transition-all duration-300 transform hover:-translate-y-1"
+                    disabled={isLoading}
+                    className="w-full bg-gradient-to-r from-[#8B7D6B] to-[#A0937D] hover:from-[#A0937D] hover:to-[#B8A491] text-white py-4 rounded-xl font-semibold shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-black/15 transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed"
                     style={{ fontFamily: 'Poppins, sans-serif' }}
                   >
                     <MessageCircle className="w-5 h-5 mr-2" />
-                    Kirim ke WhatsApp
+                    {isLoading ? 'Mengirim...' : 'Kirim ke WhatsApp'}
                   </Button>
                 </form>
               </CardContent>
