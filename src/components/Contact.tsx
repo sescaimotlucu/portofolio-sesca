@@ -1,5 +1,5 @@
 
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Heart, Instagram, Linkedin, Github } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,35 +8,55 @@ import { Textarea } from "@/components/ui/textarea";
 export const Contact = () => {
   const contactInfo = [
     {
-      icon: <Mail className="w-6 h-6 text-purple-600" />,
+      icon: <Mail className="w-6 h-6 text-white" />,
       title: "Email",
-      info: "siska@example.com",
-      link: "mailto:siska@example.com"
+      info: "fransiska@example.com",
+      link: "mailto:fransiska@example.com",
+      color: "from-[#E195AB] to-[#FFCCE1]"
     },
     {
-      icon: <Phone className="w-6 h-6 text-pink-600" />,
+      icon: <Phone className="w-6 h-6 text-white" />,
       title: "Phone",
-      info: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      info: "+62 xxx-xxxx-xxxx",
+      link: "tel:+62xxxxxxxxx",
+      color: "from-[#FFCCE1] to-[#F2F9FF]"
     },
     {
-      icon: <MapPin className="w-6 h-6 text-blue-600" />,
+      icon: <MapPin className="w-6 h-6 text-white" />,
       title: "Location",
-      info: "Jakarta, Indonesia",
+      info: "Semarang, Indonesia",
+      link: "#",
+      color: "from-[#F2F9FF] to-[#E195AB]"
+    }
+  ];
+
+  const socialLinks = [
+    {
+      icon: <Instagram className="w-5 h-5" />,
+      name: "Instagram",
+      link: "#"
+    },
+    {
+      icon: <Linkedin className="w-5 h-5" />,
+      name: "LinkedIn", 
+      link: "#"
+    },
+    {
+      icon: <Github className="w-5 h-5" />,
+      name: "GitHub",
       link: "#"
     }
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#F2F9FF]/50 relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            Let's Work Together
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#E195AB]" style={{ fontFamily: 'Fredoka, cursive' }}>
+            Let's Connect! 💕
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            I'm always interested in new opportunities and exciting projects. 
-            Let's discuss how we can bring your ideas to life!
+          <p className="text-xl text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            I'm always excited to collaborate on new projects and make new connections!
           </p>
         </div>
 
@@ -44,17 +64,20 @@ export const Contact = () => {
           {/* Contact Info */}
           <div className="space-y-6">
             {contactInfo.map((item, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 bg-white/70 backdrop-blur-sm border-0">
+              <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg shadow-[#E195AB]/20 rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg">
+                    <div className={`p-3 bg-gradient-to-r ${item.color} rounded-xl shadow-lg`}>
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800">{item.title}</h3>
+                      <h3 className="font-semibold text-[#E195AB] mb-1" style={{ fontFamily: 'Fredoka, cursive' }}>
+                        {item.title}
+                      </h3>
                       <a
                         href={item.link}
-                        className="text-gray-600 hover:text-purple-600 transition-colors duration-200"
+                        className="text-gray-600 hover:text-[#E195AB] transition-colors duration-200"
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
                       >
                         {item.info}
                       </a>
@@ -63,63 +86,91 @@ export const Contact = () => {
                 </CardContent>
               </Card>
             ))}
+
+            {/* Social Links */}
+            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg shadow-[#E195AB]/20 rounded-2xl">
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-[#E195AB] mb-4 text-center" style={{ fontFamily: 'Fredoka, cursive' }}>
+                  Follow Me! ✨
+                </h3>
+                <div className="flex justify-center space-x-4">
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.link}
+                      className="p-3 bg-gradient-to-r from-[#E195AB] to-[#FFCCE1] rounded-full text-white hover:from-[#FFCCE1] hover:to-[#E195AB] transition-all duration-300 transform hover:scale-110 shadow-lg"
+                    >
+                      {social.icon}
+                    </a>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <Card className="bg-white/70 backdrop-blur-sm border-0 shadow-xl">
+            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl shadow-[#E195AB]/20 rounded-3xl">
               <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-[#E195AB] mb-6 text-center" style={{ fontFamily: 'Fredoka, cursive' }}>
+                  Send me a message! 💌
+                </h3>
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-[#E195AB] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
                         Name *
                       </label>
                       <Input
-                        placeholder="Your name"
-                        className="border-gray-200 focus:border-purple-400 focus:ring-purple-400"
+                        placeholder="Your lovely name"
+                        className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] rounded-xl"
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-[#E195AB] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
                         Email *
                       </label>
                       <Input
                         type="email"
                         placeholder="your.email@example.com"
-                        className="border-gray-200 focus:border-purple-400 focus:ring-purple-400"
+                        className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] rounded-xl"
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
                       />
                     </div>
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-[#E195AB] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
                       Subject *
                     </label>
                     <Input
-                      placeholder="Project inquiry"
-                      className="border-gray-200 focus:border-purple-400 focus:ring-purple-400"
+                      placeholder="What would you like to talk about?"
+                      className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] rounded-xl"
+                      style={{ fontFamily: 'Poppins, sans-serif' }}
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-[#E195AB] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
                       Message *
                     </label>
                     <Textarea
-                      placeholder="Tell me about your project..."
+                      placeholder="Tell me about your ideas, projects, or just say hello! ✨"
                       rows={6}
-                      className="border-gray-200 focus:border-purple-400 focus:ring-purple-400 resize-none"
+                      className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] resize-none rounded-xl"
+                      style={{ fontFamily: 'Poppins, sans-serif' }}
                     />
                   </div>
                   
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-[#E195AB] to-[#FFCCE1] hover:from-[#FFCCE1] hover:to-[#E195AB] text-white py-4 rounded-xl font-semibold shadow-lg shadow-[#E195AB]/30 hover:shadow-xl hover:shadow-[#FFCCE1]/40 transition-all duration-300 transform hover:-translate-y-1"
+                    style={{ fontFamily: 'Poppins, sans-serif' }}
                   >
                     <Send className="w-5 h-5 mr-2" />
-                    Send Message
+                    Send Message with Love
                   </Button>
                 </form>
               </CardContent>
@@ -128,9 +179,11 @@ export const Contact = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-20 pt-8 border-t border-gray-200 text-center">
-          <p className="text-gray-600">
-            © 2024 Siska. Made with ❤️ using React and Tailwind CSS.
+        <div className="mt-20 pt-8 border-t border-[#FFCCE1] text-center">
+          <p className="text-gray-600 flex items-center justify-center gap-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            © 2024 Fransiska. Made with 
+            <Heart className="w-4 h-4 text-[#E195AB] fill-[#E195AB]" />
+            using React and Tailwind CSS.
           </p>
         </div>
       </div>

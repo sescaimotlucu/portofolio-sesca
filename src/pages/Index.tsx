@@ -1,17 +1,21 @@
 
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
-import { Projects } from "@/components/Projects";
+import { Education } from "@/components/Education";
+import { Experience } from "@/components/Experience";
+import { Skills } from "@/components/Skills";
 import { Contact } from "@/components/Contact";
 import { Navigation } from "@/components/Navigation";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-[#FFF5D7] via-[#F2F9FF] to-[#FFCCE1]">
       <Navigation />
       <Hero />
       <About />
-      <Projects />
+      <Education />
+      <Experience />
+      <Skills />
       <Contact />
     </div>
   );

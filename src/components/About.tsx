@@ -1,79 +1,64 @@
 
-import { Code, Palette, Zap, Heart } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Heart, Sparkles, Star } from "lucide-react";
 
 export const About = () => {
-  const skills = [
-    {
-      icon: <Code className="w-8 h-8 text-purple-600" />,
-      title: "Frontend Development",
-      description: "React, TypeScript, Next.js, Tailwind CSS"
-    },
-    {
-      icon: <Palette className="w-8 h-8 text-pink-600" />,
-      title: "UI/UX Design",
-      description: "Figma, Adobe Creative Suite, User Research"
-    },
-    {
-      icon: <Zap className="w-8 h-8 text-blue-600" />,
-      title: "Performance",
-      description: "Optimization, SEO, Accessibility"
-    },
-    {
-      icon: <Heart className="w-8 h-8 text-red-500" />,
-      title: "Passion Projects",
-      description: "Open source, Community building"
-    }
-  ];
-
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#F2F9FF]/50 relative">
+      {/* Decorative Elements */}
+      <div className="absolute top-10 right-10 text-[#FFCCE1] animate-pulse">
+        <Star size={20} fill="currentColor" />
+      </div>
+      
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            About Me
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#E195AB]" style={{ fontFamily: 'Fredoka, cursive' }}>
+            Hello, I'm Fransiska! 
+            <Sparkles className="inline-block ml-2 w-8 h-8 text-[#FFCCE1]" />
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            I'm a passionate developer with 3+ years of experience creating digital solutions 
-            that blend beautiful design with robust functionality. I love turning complex problems 
-            into simple, elegant designs.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {skills.map((skill, index) => (
-            <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 bg-white/70 backdrop-blur-sm">
-              <CardContent className="p-6 text-center">
-                <div className="mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                  {skill.icon}
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">{skill.title}</h3>
-                <p className="text-gray-600 text-sm">{skill.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">My Journey</h3>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                Started as a curious student exploring web technologies, I've grown into a 
-                full-stack developer who believes in the power of clean code and intuitive design.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                When I'm not coding, you'll find me contributing to open source projects, 
-                mentoring junior developers, or exploring the latest in web technologies.
-              </p>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="flex justify-center">
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&h=400&fit=crop"
-                alt="Working on projects"
-                className="rounded-xl shadow-lg w-full h-80 object-cover"
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=350&h=350&fit=crop&crop=face"
+                alt="Fransiska Portrait"
+                className="w-80 h-80 rounded-full object-cover shadow-2xl shadow-[#E195AB]/30 ring-8 ring-[#FFCCE1]/50"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 to-transparent rounded-xl"></div>
+              <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-[#E195AB] to-[#FFCCE1] rounded-full p-4 shadow-lg">
+                <Heart className="w-6 h-6 text-white fill-white" />
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center lg:text-left">
+            <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg shadow-[#E195AB]/20">
+              <h3 className="text-2xl font-bold mb-4 text-[#E195AB]" style={{ fontFamily: 'Fredoka, cursive' }}>
+                About Me
+              </h3>
+              <div className="space-y-4 text-gray-700" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                <p className="leading-relaxed">
+                  Born on <span className="text-[#E195AB] font-semibold">November 4, 2004</span>, 
+                  I'm a passionate Information Systems student who believes in creating 
+                  beautiful and functional digital experiences.
+                </p>
+                <p className="leading-relaxed">
+                  I love combining creativity with technology to build solutions that not only work well 
+                  but also bring joy to users. My journey in tech is driven by curiosity and 
+                  a desire to make the digital world a more beautiful place! ✨
+                </p>
+                <div className="flex flex-wrap gap-2 mt-6">
+                  <span className="px-4 py-2 bg-gradient-to-r from-[#FFCCE1] to-[#F2F9FF] text-[#E195AB] rounded-full text-sm font-medium">
+                    Creative Coder
+                  </span>
+                  <span className="px-4 py-2 bg-gradient-to-r from-[#FFCCE1] to-[#F2F9FF] text-[#E195AB] rounded-full text-sm font-medium">
+                    Problem Solver
+                  </span>
+                  <span className="px-4 py-2 bg-gradient-to-r from-[#FFCCE1] to-[#F2F9FF] text-[#E195AB] rounded-full text-sm font-medium">
+                    Team Player
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

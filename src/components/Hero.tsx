@@ -1,5 +1,5 @@
 
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Download, Sparkles, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
@@ -8,55 +8,70 @@ export const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="mb-8">
-          <img
-            src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face"
-            alt="Siska"
-            className="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto mb-6 shadow-2xl ring-4 ring-white/50"
-          />
-        </div>
-        
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
-          <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-            Hi, I'm Siska
-          </span>
-        </h1>
-        
-        <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Creative developer and designer passionate about building beautiful, 
-          functional digital experiences that make a difference.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            View My Work
-          </Button>
+    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-20 left-10 text-[#FFCCE1] animate-pulse">
+        <Sparkles size={24} />
+      </div>
+      <div className="absolute top-32 right-20 text-[#E195AB] animate-bounce">
+        <Heart size={20} fill="currentColor" />
+      </div>
+      <div className="absolute bottom-40 left-20 text-[#FFCCE1] animate-pulse">
+        <Sparkles size={16} />
+      </div>
+      
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Image */}
+          <div className="order-2 lg:order-1 flex justify-center">
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=500&fit=crop&crop=face"
+                alt="Fransiska"
+                className="w-80 h-96 object-cover rounded-3xl shadow-2xl shadow-[#E195AB]/30 ring-4 ring-[#FFCCE1]/50"
+              />
+              <div className="absolute -top-4 -right-4 bg-[#E195AB] rounded-full p-3 shadow-lg">
+                <Heart className="w-6 h-6 text-white fill-white" />
+              </div>
+            </div>
+          </div>
           
-          <div className="flex space-x-4">
-            <Button variant="outline" size="icon" className="rounded-full hover:bg-purple-50 hover:border-purple-300">
-              <Github size={20} />
-            </Button>
-            <Button variant="outline" size="icon" className="rounded-full hover:bg-purple-50 hover:border-purple-300">
-              <Linkedin size={20} />
-            </Button>
-            <Button variant="outline" size="icon" className="rounded-full hover:bg-purple-50 hover:border-purple-300">
-              <Mail size={20} />
-            </Button>
+          {/* Right Side - Content */}
+          <div className="order-1 lg:order-2 text-center lg:text-left">
+            <div className="mb-6">
+              <h1 className="text-6xl sm:text-8xl lg:text-9xl font-bold mb-4" style={{ fontFamily: 'Fredoka, cursive' }}>
+                <span className="text-[#E195AB] block leading-none">PORT</span>
+                <span className="text-transparent bg-gradient-to-r from-[#E195AB] to-[#FFCCE1] bg-clip-text block leading-none -mt-4">FOLIO</span>
+              </h1>
+            </div>
+            
+            <p className="text-xl sm:text-2xl text-[#E195AB] mb-8 leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              Hello! I'm <span className="font-bold text-[#E195AB]">Fransiska</span>, 
+              <br />
+              a dreamy coder with a passion for beautiful digital experiences ✨
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-[#E195AB] to-[#FFCCE1] hover:from-[#FFCCE1] hover:to-[#E195AB] text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-[#E195AB]/30 hover:shadow-xl hover:shadow-[#FFCCE1]/40 transition-all duration-300 transform hover:-translate-y-1"
+                style={{ fontFamily: 'Poppins, sans-serif' }}
+              >
+                <Download className="w-5 h-5 mr-2" />
+                Download CV
+              </Button>
+            </div>
+            
+            <button
+              onClick={scrollToAbout}
+              className="animate-bounce text-[#E195AB] hover:text-[#FFCCE1] transition-colors duration-200 flex flex-col items-center gap-2"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              <span className="text-sm">Scroll & explore</span>
+              <ArrowDown size={24} />
+            </button>
           </div>
         </div>
-        
-        <button
-          onClick={scrollToAbout}
-          className="animate-bounce text-purple-600 hover:text-purple-800 transition-colors duration-200"
-        >
-          <ArrowDown size={32} />
-        </button>
       </div>
     </section>
   );
