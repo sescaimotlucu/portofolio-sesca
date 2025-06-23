@@ -9,77 +9,69 @@ export const Projects = () => {
 
   const projects = [
     {
-      title: "E-Commerce Dashboard",
-      description: "Modern dashboard untuk manajemen toko online dengan fitur analitik real-time",
-      descriptionEn: "Modern dashboard for online store management with real-time analytics features",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      tech: ["Laravel", "PHP", "MySQL", "Chart.js"],
-      demo: "#",
-      code: "#",
-      color: "from-[#E195AB] to-[#FFCCE1]"
+      title: "Sistem Penilaian Guru Nusput",
+      description: "Sistem evaluasi kinerja guru dengan fitur penilaian multi-aspek dan laporan otomatis",
+      descriptionEn: "Teacher evaluation system with multi-aspect assessment features and automated reporting",
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop",
+      tech: ["PHP", "Laravel", "MySQL", "Chart.js"],
+      color: "from-[#FFE4E1] to-[#FFF0F5]"
     },
     {
-      title: "Student Information System",
-      description: "Sistem informasi mahasiswa dengan fitur manajemen data akademik lengkap",
-      descriptionEn: "Student information system with complete academic data management features",
-      image: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=400&h=250&fit=crop",
-      tech: ["PHP", "JavaScript", "CSS", "MySQL"],
-      demo: "#",
-      code: "#",
-      color: "from-[#FFCCE1] to-[#F2F9FF]"
+      title: "Sistem Pengingat Kandri",
+      description: "Aplikasi pengingat cerdas untuk kegiatan dan jadwal penting dengan notifikasi real-time",
+      descriptionEn: "Smart reminder application for important activities and schedules with real-time notifications",
+      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
+      tech: ["JavaScript", "Node.js", "MongoDB", "WebPush"],
+      color: "from-[#F0F8FF] to-[#E6F3FF]"
     },
     {
-      title: "Portfolio Website",
-      description: "Website portfolio responsif dengan desain modern dan animasi smooth",
-      descriptionEn: "Responsive portfolio website with modern design and smooth animations",
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=250&fit=crop",
-      tech: ["HTML", "CSS", "JavaScript", "Responsive"],
-      demo: "#",
-      code: "#",
-      color: "from-[#F2F9FF] to-[#E195AB]"
+      title: "Sistem Absensi Karyawan PT Ngupoyo",
+      description: "Sistem manajemen kehadiran karyawan dengan fitur tracking lokasi dan laporan komprehensif",
+      descriptionEn: "Employee attendance management system with location tracking and comprehensive reporting",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop",
+      tech: ["Laravel", "PHP", "MySQL", "GPS API"],
+      color: "from-[#FFF5EE] to-[#FFEEE6]"
     },
     {
-      title: "Event Management App",
-      description: "Aplikasi manajemen event kampus dengan fitur registrasi dan tracking",
-      descriptionEn: "Campus event management app with registration and tracking features",
-      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=250&fit=crop",
-      tech: ["Laravel", "Vue.js", "MySQL", "API"],
-      demo: "#",
-      code: "#",
-      color: "from-[#FFCCE1] to-[#E195AB]"
+      title: "E-Tourism Kalimantan Barat",
+      description: "Platform wisata digital untuk promosi destinasi dan budaya Kalimantan Barat",
+      descriptionEn: "Digital tourism platform for promoting West Kalimantan destinations and culture",
+      image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=250&fit=crop",
+      tech: ["Vue.js", "Laravel", "MySQL", "Maps API"],
+      color: "from-[#F5FFFA] to-[#F0FFF0]"
     }
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#FFF5D7] relative">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#FEFEFE] to-[#F8F9FA] relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#E195AB]" style={{ fontFamily: 'Fredoka, cursive' }}>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#8B7D6B]" style={{ fontFamily: 'Fredoka, cursive' }}>
             {t('projects.title')} 💻
           </h2>
-          <p className="text-xl text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          <p className="text-xl text-[#6B7280]" style={{ fontFamily: 'Poppins, sans-serif' }}>
             {t('projects.subtitle')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-xl shadow-[#E195AB]/20 rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-300 group">
+            <Card key={index} className="bg-white/90 backdrop-blur-sm border border-[#E5E7EB] shadow-lg shadow-black/5 rounded-3xl overflow-hidden hover:-translate-y-1 transition-all duration-300 group">
               <div className="relative overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`} />
+                <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-60 group-hover:opacity-40 transition-opacity duration-300`} />
               </div>
               
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-[#E195AB] mb-3" style={{ fontFamily: 'Fredoka, cursive' }}>
+                <h3 className="text-xl font-bold text-[#8B7D6B] mb-3" style={{ fontFamily: 'Fredoka, cursive' }}>
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-700 mb-4 leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                <p className="text-[#6B7280] mb-4 leading-relaxed text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   {project.description}
                 </p>
                 
@@ -87,32 +79,11 @@ export const Projects = () => {
                   {project.tech.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-gradient-to-r from-[#FFCCE1] to-[#F2F9FF] text-[#E195AB] rounded-full text-xs font-medium"
+                      className="px-3 py-1 bg-gradient-to-r from-[#F3F4F6] to-[#E5E7EB] text-[#8B7D6B] rounded-full text-xs font-medium border border-[#D1D5DB]"
                     >
                       {tech}
                     </span>
                   ))}
-                </div>
-                
-                <div className="flex gap-3">
-                  <Button
-                    size="sm"
-                    className="bg-gradient-to-r from-[#E195AB] to-[#FFCCE1] hover:from-[#FFCCE1] hover:to-[#E195AB] text-white rounded-full text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                    style={{ fontFamily: 'Poppins, sans-serif' }}
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    {t('projects.demo')}
-                  </Button>
-                  
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="border-[#E195AB] text-[#E195AB] hover:bg-[#E195AB] hover:text-white rounded-full text-sm font-semibold transition-all duration-300"
-                    style={{ fontFamily: 'Poppins, sans-serif' }}
-                  >
-                    <Github className="w-4 h-4 mr-2" />
-                    {t('projects.code')}
-                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -120,29 +91,29 @@ export const Projects = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg shadow-[#E195AB]/20 max-w-3xl mx-auto">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg shadow-black/5 max-w-3xl mx-auto border border-[#E5E7EB]">
             <div className="flex justify-center space-x-8 mb-6">
               <div className="text-center">
-                <div className="bg-gradient-to-r from-[#E195AB] to-[#FFCCE1] rounded-full p-4 shadow-lg mb-3 inline-block">
+                <div className="bg-gradient-to-r from-[#8B7D6B] to-[#A0937D] rounded-full p-4 shadow-lg mb-3 inline-block">
                   <Code className="w-6 h-6 text-white" />
                 </div>
-                <p className="text-sm text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                <p className="text-sm text-[#6B7280]" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   Clean Code
                 </p>
               </div>
               <div className="text-center">
-                <div className="bg-gradient-to-r from-[#FFCCE1] to-[#F2F9FF] rounded-full p-4 shadow-lg mb-3 inline-block">
-                  <Palette className="w-6 h-6 text-[#E195AB]" />
+                <div className="bg-gradient-to-r from-[#A0937D] to-[#B8A491] rounded-full p-4 shadow-lg mb-3 inline-block">
+                  <Palette className="w-6 h-6 text-white" />
                 </div>
-                <p className="text-sm text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                <p className="text-sm text-[#6B7280]" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   Beautiful UI
                 </p>
               </div>
               <div className="text-center">
-                <div className="bg-gradient-to-r from-[#F2F9FF] to-[#E195AB] rounded-full p-4 shadow-lg mb-3 inline-block">
+                <div className="bg-gradient-to-r from-[#B8A491] to-[#8B7D6B] rounded-full p-4 shadow-lg mb-3 inline-block">
                   <Database className="w-6 h-6 text-white" />
                 </div>
-                <p className="text-sm text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                <p className="text-sm text-[#6B7280]" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   Solid Backend
                 </p>
               </div>

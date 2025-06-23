@@ -1,4 +1,5 @@
-import { Mail, Phone, MapPin, Send, Heart, Instagram, Linkedin, Github } from "lucide-react";
+
+import { Mail, Phone, MapPin, Send, Heart, Instagram, Linkedin, Github, MessageCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,21 +15,21 @@ export const Contact = () => {
       title: t('contact.email'),
       info: "fransiska@example.com",
       link: "mailto:fransiska@example.com",
-      color: "from-[#E195AB] to-[#FFCCE1]"
+      color: "from-[#8B7D6B] to-[#A0937D]"
     },
     {
-      icon: <Phone className="w-6 h-6 text-white" />,
-      title: t('contact.phone'),
-      info: "+62 xxx-xxxx-xxxx",
-      link: "tel:+62xxxxxxxxx",
-      color: "from-[#FFCCE1] to-[#F2F9FF]"
+      icon: <MessageCircle className="w-6 h-6 text-white" />,
+      title: "WhatsApp",
+      info: "+62 821-1557-5219",
+      link: "https://wa.me/6282115575219",
+      color: "from-[#A0937D] to-[#B8A491]"
     },
     {
       icon: <MapPin className="w-6 h-6 text-white" />,
       title: t('contact.location'),
       info: "Semarang, Indonesia",
       link: "#",
-      color: "from-[#F2F9FF] to-[#E195AB]"
+      color: "from-[#B8A491] to-[#8B7D6B]"
     }
   ];
 
@@ -36,7 +37,7 @@ export const Contact = () => {
     {
       icon: <Instagram className="w-5 h-5" />,
       name: "Instagram",
-      link: "#"
+      link: "https://instagram.com/sesc.a11"
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
@@ -46,18 +47,41 @@ export const Contact = () => {
     {
       icon: <Github className="w-5 h-5" />,
       name: "GitHub",
-      link: "#"
+      link: "https://github.com/sescaimotlucu"
     }
   ];
 
+  const handleWhatsAppSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const subject = formData.get('subject') as string;
+    const message = formData.get('message') as string;
+
+    const whatsappMessage = `Halo Fransiska! 
+
+Nama: ${name}
+Email: ${email}
+Subjek: ${subject}
+
+Pesan:
+${message}
+
+Terima kasih!`;
+
+    const whatsappUrl = `https://wa.me/6282115575219?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#F2F9FF]/50 relative">
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#F8F9FA] to-[#FEFEFE] relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#E195AB]" style={{ fontFamily: 'Fredoka, cursive' }}>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#8B7D6B]" style={{ fontFamily: 'Fredoka, cursive' }}>
             {t('contact.title')} 💕
           </h2>
-          <p className="text-xl text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          <p className="text-xl text-[#6B7280]" style={{ fontFamily: 'Poppins, sans-serif' }}>
             {t('contact.subtitle')}
           </p>
         </div>
@@ -66,19 +90,21 @@ export const Contact = () => {
           {/* Contact Info */}
           <div className="space-y-6">
             {contactInfo.map((item, index) => (
-              <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg shadow-[#E195AB]/20 rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300">
+              <Card key={index} className="bg-white/90 backdrop-blur-sm border border-[#E5E7EB] shadow-lg shadow-black/5 rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4">
                     <div className={`p-3 bg-gradient-to-r ${item.color} rounded-xl shadow-lg`}>
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-[#E195AB] mb-1" style={{ fontFamily: 'Fredoka, cursive' }}>
+                      <h3 className="font-semibold text-[#8B7D6B] mb-1" style={{ fontFamily: 'Fredoka, cursive' }}>
                         {item.title}
                       </h3>
                       <a
                         href={item.link}
-                        className="text-gray-600 hover:text-[#E195AB] transition-colors duration-200"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#6B7280] hover:text-[#8B7D6B] transition-colors duration-200"
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                       >
                         {item.info}
@@ -90,9 +116,9 @@ export const Contact = () => {
             ))}
 
             {/* Social Links */}
-            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg shadow-[#E195AB]/20 rounded-2xl">
+            <Card className="bg-white/90 backdrop-blur-sm border border-[#E5E7EB] shadow-lg shadow-black/5 rounded-2xl">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-[#E195AB] mb-4 text-center" style={{ fontFamily: 'Fredoka, cursive' }}>
+                <h3 className="font-semibold text-[#8B7D6B] mb-4 text-center" style={{ fontFamily: 'Fredoka, cursive' }}>
                   {t('contact.follow')} ✨
                 </h3>
                 <div className="flex justify-center space-x-4">
@@ -100,7 +126,9 @@ export const Contact = () => {
                     <a
                       key={index}
                       href={social.link}
-                      className="p-3 bg-gradient-to-r from-[#E195AB] to-[#FFCCE1] rounded-full text-white hover:from-[#FFCCE1] hover:to-[#E195AB] transition-all duration-300 transform hover:scale-110 shadow-lg"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-gradient-to-r from-[#8B7D6B] to-[#A0937D] rounded-full text-white hover:from-[#A0937D] hover:to-[#B8A491] transition-all duration-300 transform hover:scale-110 shadow-lg"
                     >
                       {social.icon}
                     </a>
@@ -112,67 +140,75 @@ export const Contact = () => {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl shadow-[#E195AB]/20 rounded-3xl">
+            <Card className="bg-white/90 backdrop-blur-sm border border-[#E5E7EB] shadow-xl shadow-black/5 rounded-3xl">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-[#E195AB] mb-6 text-center" style={{ fontFamily: 'Fredoka, cursive' }}>
+                <h3 className="text-2xl font-bold text-[#8B7D6B] mb-6 text-center" style={{ fontFamily: 'Fredoka, cursive' }}>
                   {t('contact.form.title')} 💌
                 </h3>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleWhatsAppSubmit}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-[#E195AB] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                      <label className="block text-sm font-medium text-[#8B7D6B] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
                         {t('contact.form.name')} *
                       </label>
                       <Input
+                        name="name"
                         placeholder={t('contact.form.name.placeholder')}
-                        className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] rounded-xl"
+                        className="border-[#D1D5DB] focus:border-[#8B7D6B] focus:ring-[#8B7D6B] rounded-xl bg-white"
                         style={{ fontFamily: 'Poppins, sans-serif' }}
+                        required
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-[#E195AB] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                      <label className="block text-sm font-medium text-[#8B7D6B] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
                         Email *
                       </label>
                       <Input
+                        name="email"
                         type="email"
                         placeholder={t('contact.form.email.placeholder')}
-                        className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] rounded-xl"
+                        className="border-[#D1D5DB] focus:border-[#8B7D6B] focus:ring-[#8B7D6B] rounded-xl bg-white"
                         style={{ fontFamily: 'Poppins, sans-serif' }}
+                        required
                       />
                     </div>
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-[#E195AB] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                    <label className="block text-sm font-medium text-[#8B7D6B] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
                       {t('contact.form.subject')} *
                     </label>
                     <Input
+                      name="subject"
                       placeholder={t('contact.form.subject.placeholder')}
-                      className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] rounded-xl"
+                      className="border-[#D1D5DB] focus:border-[#8B7D6B] focus:ring-[#8B7D6B] rounded-xl bg-white"
                       style={{ fontFamily: 'Poppins, sans-serif' }}
+                      required
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-[#E195AB] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                    <label className="block text-sm font-medium text-[#8B7D6B] mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
                       {t('contact.form.message')} *
                     </label>
                     <Textarea
+                      name="message"
                       placeholder={t('contact.form.message.placeholder')}
                       rows={6}
-                      className="border-[#FFCCE1] focus:border-[#E195AB] focus:ring-[#E195AB] resize-none rounded-xl"
+                      className="border-[#D1D5DB] focus:border-[#8B7D6B] focus:ring-[#8B7D6B] resize-none rounded-xl bg-white"
                       style={{ fontFamily: 'Poppins, sans-serif' }}
+                      required
                     />
                   </div>
                   
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-gradient-to-r from-[#E195AB] to-[#FFCCE1] hover:from-[#FFCCE1] hover:to-[#E195AB] text-white py-4 rounded-xl font-semibold shadow-lg shadow-[#E195AB]/30 hover:shadow-xl hover:shadow-[#FFCCE1]/40 transition-all duration-300 transform hover:-translate-y-1"
+                    className="w-full bg-gradient-to-r from-[#8B7D6B] to-[#A0937D] hover:from-[#A0937D] hover:to-[#B8A491] text-white py-4 rounded-xl font-semibold shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-black/15 transition-all duration-300 transform hover:-translate-y-1"
                     style={{ fontFamily: 'Poppins, sans-serif' }}
                   >
-                    <Send className="w-5 h-5 mr-2" />
-                    {t('contact.form.send')}
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    Kirim ke WhatsApp
                   </Button>
                 </form>
               </CardContent>
@@ -181,10 +217,10 @@ export const Contact = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-20 pt-8 border-t border-[#FFCCE1] text-center">
-          <p className="text-gray-600 flex items-center justify-center gap-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <div className="mt-20 pt-8 border-t border-[#E5E7EB] text-center">
+          <p className="text-[#6B7280] flex items-center justify-center gap-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
             © 2024 Fransiska. {t('contact.footer')} 
-            <Heart className="w-4 h-4 text-[#E195AB] fill-[#E195AB]" />
+            <Heart className="w-4 h-4 text-[#8B7D6B] fill-[#8B7D6B]" />
             {t('contact.footer.tech')}
           </p>
         </div>
